@@ -24,8 +24,8 @@ trainY <- training$y
 rec_reg <- recipe(y ~ ., data = training[, c(1:3, ncol(training))]) %>%
   step_center(all_predictors()) %>%
   step_scale(all_predictors()) 
-testX <- trainX[, -ncol(training)]
-testY <- trainX$y 
+testX <- testing[, -ncol(testing)]
+testY <- testing$y 
 
 seeds <- vector(mode = "list", length = nrow(training) + 1)
 seeds <- lapply(seeds, function(x) 1:20)
